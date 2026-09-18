@@ -2,10 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tasky_app_last_thing/core/themes/theme_controller.dart';
 import 'package:tasky_app_last_thing/models/task_model.dart';
-import 'package:tasky_app_last_thing/themes/theme_controller.dart';
-import 'package:tasky_app_last_thing/widgets/custom_checkBox_widget.dart';
-import 'package:tasky_app_last_thing/widgets/task_item_widget.dart';
+import 'package:tasky_app_last_thing/core/components/task_item_widget.dart';
 
 class TaskListWidget extends StatelessWidget {
   const TaskListWidget({super.key, required this.tasks, required this.emptyMessage, required this.onChanged, required this.onDeleteSelect, required this.onEdit});

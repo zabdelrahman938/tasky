@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tasky_app_last_thing/screens/home_screen.dart';
-import 'package:tasky_app_last_thing/screens/welcome_screen.dart';
-import 'package:tasky_app_last_thing/services/preference_manager.dart';
-import 'package:tasky_app_last_thing/themes/dark_theme.dart';
-import 'package:tasky_app_last_thing/themes/light_theme.dart';
-import 'package:tasky_app_last_thing/themes/theme_controller.dart';
+import 'package:tasky_app_last_thing/core/services/preference_manager.dart';
+import 'package:tasky_app_last_thing/core/themes/theme_controller.dart';
+import 'package:tasky_app_last_thing/features/home/home_screen.dart';
+import 'package:tasky_app_last_thing/features/welcome/welcome_screen.dart';
 
-import 'screens/main_screen.dart';
+import 'core/themes/dark_theme.dart';
+import 'core/themes/light_theme.dart';
+import 'features/navigation/main_screen.dart';
 
 
 void main() async{

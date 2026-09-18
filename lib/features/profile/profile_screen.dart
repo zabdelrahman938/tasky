@@ -5,12 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tasky_app_last_thing/core/services/preference_manager.dart';
+import 'package:tasky_app_last_thing/core/themes/theme_controller.dart';
+import 'package:tasky_app_last_thing/core/widgets/custom_svg_picture_widget.dart';
 import 'package:tasky_app_last_thing/main.dart';
-import 'package:tasky_app_last_thing/screens/user_details_screen.dart';
-import 'package:tasky_app_last_thing/screens/welcome_screen.dart';
-import 'package:tasky_app_last_thing/services/preference_manager.dart';
-import 'package:tasky_app_last_thing/themes/theme_controller.dart';
-import 'package:tasky_app_last_thing/widgets/custom_svg_picture_widget.dart';
+import 'package:tasky_app_last_thing/features/profile/user_details_screen.dart';
+import 'package:tasky_app_last_thing/features/welcome/welcome_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
  const  ProfileScreen({super.key});

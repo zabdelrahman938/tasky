@@ -4,14 +4,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tasky_app_last_thing/core/services/preference_manager.dart';
+import 'package:tasky_app_last_thing/core/widgets/custom_svg_picture_widget.dart';
 import 'package:tasky_app_last_thing/models/task_model.dart';
-import 'package:tasky_app_last_thing/screens/add_task_screen.dart';
-import 'package:tasky_app_last_thing/services/preference_manager.dart';
-import 'package:tasky_app_last_thing/widgets/achieved_tasks_widget.dart';
-import 'package:tasky_app_last_thing/widgets/custom_svg_picture_widget.dart';
-import 'package:tasky_app_last_thing/widgets/high_priority_tasks_widget.dart';
-import 'package:tasky_app_last_thing/widgets/sliver_task_list_widget.dart';
-import 'package:tasky_app_last_thing/widgets/task_list_widget.dart';
+import 'package:tasky_app_last_thing/features/add_task/add_task_screen.dart';
+import 'package:tasky_app_last_thing/features/home/widgets/achieved_tasks_widget.dart';
+import 'package:tasky_app_last_thing/features/home/widgets/high_priority_tasks_widget.dart';
+import 'package:tasky_app_last_thing/features/home/widgets/sliver_task_list_widget.dart';
+import 'package:tasky_app_last_thing/core/components/task_list_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

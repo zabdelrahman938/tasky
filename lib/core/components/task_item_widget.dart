@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:tasky_app_last_thing/enums/task_item_action_enum.dart';
+import 'package:tasky_app_last_thing/core/enums/task_item_action_enum.dart';
+import 'package:tasky_app_last_thing/core/services/preference_manager.dart';
+import 'package:tasky_app_last_thing/core/themes/theme_controller.dart';
+import 'package:tasky_app_last_thing/core/widgets/custom_checkBox_widget.dart';
+import 'package:tasky_app_last_thing/core/widgets/custom_textFormField_widget.dart';
 import 'package:tasky_app_last_thing/models/task_model.dart';
-import 'package:tasky_app_last_thing/services/preference_manager.dart';
-import 'package:tasky_app_last_thing/themes/theme_controller.dart';
-import 'package:tasky_app_last_thing/widgets/custom_checkBox_widget.dart';
-import 'package:tasky_app_last_thing/widgets/custom_textFormField_widget.dart';
 
 class TaskItemWidget extends StatelessWidget {
   const TaskItemWidget({

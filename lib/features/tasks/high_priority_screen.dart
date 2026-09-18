@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tasky_app_last_thing/core/services/preference_manager.dart';
 import 'package:tasky_app_last_thing/models/task_model.dart';
-import 'package:tasky_app_last_thing/services/preference_manager.dart';
-import 'package:tasky_app_last_thing/widgets/task_list_widget.dart';
+import 'package:tasky_app_last_thing/core/components/task_list_widget.dart';
 
 class HighPriorityScreen extends StatefulWidget {
  const HighPriorityScreen({super.key});

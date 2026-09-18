@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tasky_app_last_thing/themes/theme_controller.dart';
+import 'package:tasky_app_last_thing/core/themes/theme_controller.dart';
 
 class CustomSvgPictureWidget extends StatelessWidget {
   const CustomSvgPictureWidget({super.key, required this.path, required this.withColorFilter, this.width, this.height});

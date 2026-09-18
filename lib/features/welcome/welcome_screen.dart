@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tasky_app_last_thing/screens/home_screen.dart';
-import 'package:tasky_app_last_thing/screens/main_screen.dart';
-import 'package:tasky_app_last_thing/services/preference_manager.dart';
-import 'package:tasky_app_last_thing/widgets/custom_svg_picture_widget.dart';
-import 'package:tasky_app_last_thing/widgets/custom_textFormField_widget.dart';
+import 'package:tasky_app_last_thing/core/services/preference_manager.dart';
+import 'package:tasky_app_last_thing/core/widgets/custom_svg_picture_widget.dart';
+import 'package:tasky_app_last_thing/core/widgets/custom_textFormField_widget.dart';
+import 'package:tasky_app_last_thing/features/home/home_screen.dart';
+import 'package:tasky_app_last_thing/features/navigation/main_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
    WelcomeScreen({super.key});

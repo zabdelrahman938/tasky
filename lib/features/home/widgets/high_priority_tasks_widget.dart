@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tasky_app_last_thing/core/themes/theme_controller.dart';
+import 'package:tasky_app_last_thing/core/widgets/custom_checkBox_widget.dart';
 import 'package:tasky_app_last_thing/models/task_model.dart';
-import 'package:tasky_app_last_thing/screens/high_priority_screen.dart';
-import 'package:tasky_app_last_thing/themes/theme_controller.dart';
-import 'package:tasky_app_last_thing/widgets/custom_checkBox_widget.dart';
+import 'package:tasky_app_last_thing/features/tasks/high_priority_screen.dart';
 
 class HighPriorityTasks extends StatelessWidget {
   const HighPriorityTasks({super.key,  required this.onChanged, required this.tasks, required this.loadTask});
