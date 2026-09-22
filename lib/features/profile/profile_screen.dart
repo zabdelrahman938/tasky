@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tasky_app_last_thing/core/constance/storage_key.dart';
 import 'package:tasky_app_last_thing/core/services/preference_manager.dart';
 import 'package:tasky_app_last_thing/core/themes/theme_controller.dart';
 import 'package:tasky_app_last_thing/core/widgets/custom_svg_picture_widget.dart';
@@ -32,9 +33,9 @@ String? userImage;
   }
 _loadUserDetails()async{
   setState(() {
-    username= PreferenceManager().getString("username")??"Guest";
-    motivationQuote= PreferenceManager().getString("motivationQuote")??"One task at a time. One step closer.";
-    userImage=PreferenceManager().getString("user_image");
+    username= PreferenceManager().getString(StorageKey.username)??"Guest";
+    motivationQuote= PreferenceManager().getString(StorageKey.motivationQuote)??"One task at a time. One step closer.";
+    userImage=PreferenceManager().getString(StorageKey.userImage);
   });
 }
   @override
@@ -143,9 +144,9 @@ _loadUserDetails()async{
               Divider(color: Color(0xff6E6E6E),thickness: 2,endIndent: 25,indent: 15,),
               ListTile(
                 onTap: ()async{
-                  PreferenceManager().remove("username");
-                  PreferenceManager().remove("motivationQuote");
-                  PreferenceManager().remove("tasks");
+                  PreferenceManager().remove(StorageKey.username);
+                  PreferenceManager().remove(StorageKey.motivationQuote);
+                  PreferenceManager().remove(StorageKey.tasks);
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (BuildContext context)=>WelcomeScreen()),
@@ -171,7 +172,7 @@ _loadUserDetails()async{
   void _saveImage(XFile file) async{
  final appDir= await getApplicationDocumentsDirectory();
  final newFile= await File(file.path).copy("${appDir.path}/ ${file.name}");
-await PreferenceManager().setString("user_image", newFile.path);
+await PreferenceManager().setString(StorageKey.userImage, newFile.path);
   }
 }
 void showImageSourceDialog(BuildContext context,Function(XFile)selectedFile){

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tasky_app_last_thing/core/constance/storage_key.dart';
 import 'package:tasky_app_last_thing/core/services/preference_manager.dart';
 import 'package:tasky_app_last_thing/models/task_model.dart';
 import 'package:tasky_app_last_thing/core/components/task_list_widget.dart';
@@ -21,7 +22,7 @@ List<TaskModel> highPriorityTasks=[];
     _loadTasks();
   }
 _loadTasks()async{
-  final jsonData=PreferenceManager().getString("tasks");
+  final jsonData=PreferenceManager().getString(StorageKey.tasks);
   if(jsonData !=null){
     final decodedTasks=jsonDecode(jsonData)as List<dynamic>;
     setState(() {
@@ -33,7 +34,7 @@ _loadTasks()async{
 _deleteTask(int? id)async {
   List<TaskModel>tasks=[];
   if(id ==null)return;
-  final jsonData=PreferenceManager().getString("tasks");
+  final jsonData=PreferenceManager().getString(StorageKey.tasks);
   if(jsonData !=null) {
     final decodedTasks = jsonDecode(jsonData) as List<dynamic>;
     tasks = decodedTasks.map((_element) => TaskModel.fromJson(_element)).toList();
@@ -42,7 +43,7 @@ _deleteTask(int? id)async {
       highPriorityTasks.removeWhere((_element) => _element.id == id);
     });
     final updatedTasks = tasks.map((_element) => _element.toJson()).toList();
-    await PreferenceManager().setString("tasks", jsonEncode(updatedTasks));
+    await PreferenceManager().setString(StorageKey.tasks, jsonEncode(updatedTasks));
   }
 }
   @override
@@ -65,13 +66,13 @@ _deleteTask(int? id)async {
                 highPriorityTasks[index!].isChecked=value??false;
               });
 
-              final jsonData=PreferenceManager().getString("tasks");
+              final jsonData=PreferenceManager().getString(StorageKey.tasks);
               if(jsonData !=null){
                 final dataDecoded=jsonDecode(jsonData)as List<dynamic>;
                 final allDataList=dataDecoded.map((_element)=>TaskModel.fromJson(_element)).toList();
                 final int newIndex = allDataList.indexWhere((_element)=>_element.id==highPriorityTasks[index!].id);
                 allDataList[newIndex]=highPriorityTasks[index!];
-                await PreferenceManager().setString("tasks", jsonEncode(allDataList.map((e)=>e.toJson()).toList()));
+                await PreferenceManager().setString(StorageKey.tasks, jsonEncode(allDataList.map((e)=>e.toJson()).toList()));
                 _loadTasks();
               }
 

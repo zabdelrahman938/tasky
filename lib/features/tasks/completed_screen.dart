@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tasky_app_last_thing/core/constance/storage_key.dart';
 import 'package:tasky_app_last_thing/core/services/preference_manager.dart';
 import 'package:tasky_app_last_thing/models/task_model.dart';
 import 'package:tasky_app_last_thing/core/components/task_list_widget.dart';
@@ -23,7 +24,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
     _loadTasks();
   }
   _loadTasks()async{
-    final taskJson =PreferenceManager().getString("tasks");
+    final taskJson =PreferenceManager().getString(StorageKey.tasks);
     if(taskJson != null){
       final taskDecode=jsonDecode(taskJson)as List<dynamic>;
       setState(() {
@@ -35,7 +36,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
   _deleteTask(int? id)async {
     List<TaskModel>tasks=[];
     if(id ==null)return;
-    final jsonData=PreferenceManager().getString("tasks");
+    final jsonData=PreferenceManager().getString(StorageKey.tasks);
     if(jsonData !=null) {
       final decodedTasks = jsonDecode(jsonData) as List<dynamic>;
       tasks = decodedTasks.map((_element) => TaskModel.fromJson(_element)).toList();
@@ -44,7 +45,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
         completedTasks.removeWhere((_element) => _element.id == id);
       });
       final updatedTasks = tasks.map((_element) => _element.toJson()).toList();
-      await PreferenceManager().setString("tasks", jsonEncode(updatedTasks));
+      await PreferenceManager().setString(StorageKey.tasks, jsonEncode(updatedTasks));
     }
   }
   @override
@@ -67,13 +68,13 @@ class _CompletedScreenState extends State<CompletedScreen> {
                   completedTasks[index!].isChecked=value??false;
                 });
 
-                final allJsonData=PreferenceManager().getString("tasks");
+                final allJsonData=PreferenceManager().getString(StorageKey.tasks);
                 if(allJsonData !=null){
                   final dataDecode =jsonDecode(allJsonData)as List<dynamic>;
                   final finalData=dataDecode.map((_element)=>TaskModel.fromJson(_element)).toList();
                   final int newIndex = finalData.indexWhere((_element)=>_element.id==completedTasks[index!].id);
                   finalData[newIndex]=completedTasks[index!];
-                  await PreferenceManager().setString("tasks", jsonEncode(finalData.map((e)=>e.toJson()).toList()));
+                  await PreferenceManager().setString(StorageKey.tasks, jsonEncode(finalData.map((e)=>e.toJson()).toList()));
                   _loadTasks();
                 }
 

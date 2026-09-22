@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tasky_app_last_thing/core/constance/storage_key.dart';
 import 'package:tasky_app_last_thing/core/services/preference_manager.dart';
 import 'package:tasky_app_last_thing/core/widgets/custom_textFormField_widget.dart';
 
@@ -22,8 +23,8 @@ final GlobalKey<FormState>_key=GlobalKey();
     _fillUserDetails();
   }
 _fillUserDetails()async{
-  usernameController.text =  PreferenceManager().getString("username")??"Guest";
-  motivationQuoteController.text =  PreferenceManager().getString("motivationQuote")??"One task at a time. One step closer.";
+  usernameController.text =  PreferenceManager().getString(StorageKey.username)??"Guest";
+  motivationQuoteController.text =  PreferenceManager().getString(StorageKey.motivationQuote)??"One task at a time. One step closer.";
 
 }
   @override
@@ -65,8 +66,8 @@ _fillUserDetails()async{
               ElevatedButton(
                 onPressed: ()async{
                   if(_key.currentState!.validate()){
-                   await  PreferenceManager().setString("username", usernameController.text);
-                   await  PreferenceManager().setString("motivationQuote", motivationQuoteController.text);
+                   await  PreferenceManager().setString(StorageKey.username, usernameController.text);
+                   await  PreferenceManager().setString(StorageKey.motivationQuote, motivationQuoteController.text);
                    Navigator.of(context).pop(true);
                   }
                 },

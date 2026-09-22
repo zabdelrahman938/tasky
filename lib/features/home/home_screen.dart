@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tasky_app_last_thing/core/constance/storage_key.dart';
 import 'package:tasky_app_last_thing/core/services/preference_manager.dart';
 import 'package:tasky_app_last_thing/core/widgets/custom_svg_picture_widget.dart';
 import 'package:tasky_app_last_thing/models/task_model.dart';
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
   _loadTasks()async{
-   final taskJson=PreferenceManager().getString("tasks");
+   final taskJson=PreferenceManager().getString(StorageKey.tasks);
    if(taskJson !=null){
      final taskDecode=jsonDecode(taskJson)as List<dynamic>;
      setState(() {
@@ -63,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _calculatePercent();
     });
     final updatedTask=tasks.map((_element)=>_element.toJson()).toList();
-    await PreferenceManager().setString("tasks", jsonEncode(updatedTask));
+    await PreferenceManager().setString(StorageKey.tasks, jsonEncode(updatedTask));
   }
   _deleteTask(int? id)async {
     if(id ==null)return;
@@ -72,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _calculatePercent();
     });
     final updatedTasks=tasks.map((_element)=>_element.toJson()).toList();
-   await PreferenceManager().setString("tasks", jsonEncode(updatedTasks));
+   await PreferenceManager().setString(StorageKey.tasks, jsonEncode(updatedTasks));
   }
   @override
   Widget build(BuildContext context) {

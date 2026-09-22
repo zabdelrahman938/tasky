@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tasky_app_last_thing/core/constance/storage_key.dart';
 import 'package:tasky_app_last_thing/core/services/preference_manager.dart';
 import 'package:tasky_app_last_thing/core/widgets/custom_svg_picture_widget.dart';
 import 'package:tasky_app_last_thing/core/widgets/custom_textFormField_widget.dart';
@@ -82,7 +83,7 @@ class WelcomeScreen extends StatelessWidget {
                     ElevatedButton.icon(
                         onPressed: ()async{
                          if(_key.currentState!.validate()){
-                       await PreferenceManager().setString("username", _controller.text);
+                       await PreferenceManager().setString(StorageKey.username, _controller.text);
                     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>MainScreen()));
                          }else{
                            ScaffoldMessenger.of(context).showSnackBar(
