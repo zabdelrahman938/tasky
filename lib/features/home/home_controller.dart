@@ -17,10 +17,10 @@ class HomeController extends ChangeNotifier{
   double percent=0.0;
   String? userImage;
   init(){
-    loadUsername();
+    loadUserData();
     loadTasks();
   }
-  loadUsername()async{
+  loadUserData()async{
 
       username= PreferenceManager().getString("username")??"Guest";
       userImage= PreferenceManager().getString("user_image");
