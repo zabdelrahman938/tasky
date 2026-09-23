@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tasky_app_last_thing/core/widgets/custom_svg_picture_widget.dart';
+import 'package:tasky_app_last_thing/features/add_task/add_task_controller.dart';
 import 'package:tasky_app_last_thing/features/home/home_controller.dart';
 import 'package:tasky_app_last_thing/features/add_task/add_task_screen.dart';
 import 'package:tasky_app_last_thing/features/home/widgets/achieved_tasks_widget.dart';
@@ -20,7 +21,7 @@ class HomeScreen extends StatelessWidget {
             builder: (BuildContext context) {
               return  FloatingActionButton.extended(
                 onPressed: ()async{
-                  final bool? result =await Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>AddTaskScreen()));
+                  final bool? result =await Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> AddTaskScreen()));
                   if (result==true&&result!=null){
                     context.read<HomeController>().loadTasks();
                   }
